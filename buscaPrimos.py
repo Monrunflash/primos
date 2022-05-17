@@ -1,16 +1,21 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 # Abre el fichero
-fichero = open("fichero.txt","r+")
-lista = list()
-# Mira a ver si el fichero tiene contenido
-tieneContenido = fichero.read()
-if tieneContenido:
+import os
+
+ruta = "fichero.txt"
+#comprobamos que la ruta exista
+if os.path.isfile(ruta):
+    fichero = open(ruta,"r+")
+    tieneContenido = fichero.read()
     primos = tieneContenido.split(",")
 else:
+    fichero = open(ruta,"w+")
     fichero.write("2")
     primos = [2]
+lista = list()
 # Selecciona el último número de la lista para empezar a probar
+print(primos)
 count = int(primos[len(primos)-1])
 limite = int(input("¿Cuántos nuevos números quieres añadir? "))
 # Recorre todos los numeros hasta el limite de números seleccionados
